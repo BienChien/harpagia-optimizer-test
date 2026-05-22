@@ -1412,7 +1412,7 @@ function navigateCombo(btn, dir){
 (function () {
     function updateEmbedZoom() {
         if (window.self !== window.top) {
-            document.documentElement.style.zoom = window.outerWidth <= 680 ? '0.80' : '';
+            document.documentElement.style.zoom = screen.width <= 680 ? '0.80' : '';
         }
     }
     updateEmbedZoom();
