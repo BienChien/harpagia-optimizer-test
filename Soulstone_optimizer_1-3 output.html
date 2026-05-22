@@ -460,17 +460,7 @@
     color: var(--parchment-dim); white-space: nowrap;
     box-shadow: 0 4px 16px rgba(0,0,0,0.6);
   }
-  @media (max-width: 580px) {
-    .stone-wheel {
-      grid-template-areas: "tl tr" "s s" "bl br";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-    }
-    .stone-img { width: 150px; height: 150px; }
-    .affix-slot { width: 100%; }
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 680px) {
     body { padding: 16px 12px 40px; }
 
     .stone-wheel {
@@ -479,7 +469,8 @@
       grid-template-rows: auto;
       row-gap: 10px;
     }
-    .stone-img { width: 80px; height: 80px; }
+    .stone-img { width: 120px; height: 120px; }
+    .affix-slot { width: 100%; }
 
     .grimoire-pairs { flex-direction: column; gap: 10px; }
 
