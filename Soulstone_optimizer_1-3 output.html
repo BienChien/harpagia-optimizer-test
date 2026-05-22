@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.65">
+<meta name="viewport" content="width=device-width, initial-scale=0.80">
 <title>Harpagia Soulstone Optimizer</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -487,7 +487,7 @@
 <div class="page-wrap">
 
   <div class="header">
-    <div class="header-eyebrow">Harpagia · Build Tool (1.1)</div>
+    <div class="header-eyebrow">Harpagia · Build Tool (1.2)</div>
     <h1>Soulstone Optimizer</h1>
     <div class="header-rule">✦</div>
   </div>
@@ -781,13 +781,13 @@ let _openPickerBtn = null, _openPickerDrop = null;
 let _openGrimPickerBtn = null, _openGrimPickerDrop = null;
 
 function positionDrop(btn, drop) {
+  const zoom = parseFloat(document.documentElement.style.zoom) || 1;
   const rect = btn.getBoundingClientRect();
-  const dropH = 290;
-  const top = (rect.bottom + dropH + 4 < window.innerHeight)
-    ? rect.bottom + 4
-    : rect.top - dropH - 4;
-  drop.style.left = rect.left + "px";
-  drop.style.top  = top + "px";
+  const dropH = 290 * zoom; // scale CSS px → viewport px for correct comparison
+  const openBelow = rect.bottom + dropH + 4 < window.innerHeight;
+  const topVp = openBelow ? rect.bottom + 4 : rect.top - dropH - 4;
+  drop.style.left = (rect.left / zoom) + "px";
+  drop.style.top  = (topVp  / zoom) + "px";
 }
 
 function toggleGrimPicker(e, slotId) {
@@ -1414,7 +1414,7 @@ function navigateCombo(btn, dir){
 (function () {
     function updateEmbedZoom() {
         if (window.self !== window.top) {
-            document.documentElement.style.zoom = screen.width <= 680 ? '0.65' : '';
+            document.documentElement.style.zoom = screen.width <= 680 ? '0.80' : '';
         }
     }
     updateEmbedZoom();
