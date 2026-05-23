@@ -1200,7 +1200,6 @@ function solveBuilds(A,soulVals,playerGrimoires){
     const glyphKey=build.glyphs.map(g=>[g.a,g.b].sort().join("+")).sort().join("|");
     const key=A.map(a=>build.totals[a]).join(",")+"|"+grimKey+"|"+glyphKey;
     if(!seen.has(key)){ seen.add(key); unique.push(build); }
-    if(unique.length>=60) break;
   }
   return unique;
 }
@@ -1388,7 +1387,7 @@ function run(){
     const grp=document.createElement("div");
     grp.className="output-group";
     grp.innerHTML=`<div class="group-label less">— Less Optimal —</div>`;
-    lessKeys.forEach((k,i)=>grp.appendChild(buildPill(groupMap.get(k),true,i)));
+    lessKeys.forEach((k,i)=>grp.appendChild(buildPill(groupMap.get(k).slice(0,10),true,i)));
     out.appendChild(grp);
   }
 }
